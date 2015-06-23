@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Web.Mvc;
-using System.Web.Services.Protocols;
+using Entity;
 using Ninject;
-using WebStone.Controllers;
+using Raven.Client;
+using Raven.Client.Document;
 
 namespace WebStone.Infrastucture
 {
@@ -19,6 +21,17 @@ namespace WebStone.Infrastucture
 
         private void AddBinding()
         {
+            InitDbContext();
+        }
+
+        private void InitDbContext()
+        {
+            var connectionString = ConfigurationManager.AppSettings["DatabaseUrl"];
+            var databaseName = ConfigurationManager.AppSettings["DefaultDatabase"];
+            var documentStore = new DocumentStore {Url = connectionString, DefaultDatabase = databaseName};
+            documentStore.Initialize();
+
+            _kernel.Bind<IDocumentStore>().ToConstant(documentStore);
         }
 
         public object GetService(Type serviceType)

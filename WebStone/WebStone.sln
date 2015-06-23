@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStone", "WebStone\WebStone.csproj", "{51567A7C-7797-4DDA-8373-D6B8DAEE57F9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity", "Entity\Entity.csproj", "{981A4E6E-C90F-453E-B6F2-CB23C6B91851}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{51567A7C-7797-4DDA-8373-D6B8DAEE57F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51567A7C-7797-4DDA-8373-D6B8DAEE57F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51567A7C-7797-4DDA-8373-D6B8DAEE57F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{981A4E6E-C90F-453E-B6F2-CB23C6B91851}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{981A4E6E-C90F-453E-B6F2-CB23C6B91851}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{981A4E6E-C90F-453E-B6F2-CB23C6B91851}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{981A4E6E-C90F-453E-B6F2-CB23C6B91851}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

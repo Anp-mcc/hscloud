@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<Entity.Deck>
+
+@{
     Layout = null;
 }
 
@@ -10,7 +12,12 @@
     </head>
     <body>
         <div>
-              Hello world!
+            Hello world!
         </div>
+        
+      @foreach (var item in @Model)
+      {
+          <div>@item.Name</div>
+      }
     </body>
 </html>
