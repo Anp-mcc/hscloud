@@ -76,12 +76,14 @@ namespace WebStone.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = "Index";
+            public readonly string GetDeck = "GetDeck";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string Index = "Index";
+            public const string GetDeck = "GetDeck";
         }
 
 
@@ -95,8 +97,10 @@ namespace WebStone.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string GetDeck = "GetDeck";
                 public readonly string Index = "Index";
             }
+            public readonly string GetDeck = "~/Views/Home/GetDeck.cshtml";
             public readonly string Index = "~/Views/Home/Index.cshtml";
         }
     }
@@ -114,6 +118,17 @@ namespace WebStone.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
             IndexOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void GetDeckOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult GetDeck()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GetDeck);
+            GetDeckOverride(callInfo);
             return callInfo;
         }
 

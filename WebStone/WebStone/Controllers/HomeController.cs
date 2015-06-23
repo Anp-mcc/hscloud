@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
+using WebStone.Models;
 
 namespace WebStone.Controllers
 {
@@ -7,6 +9,12 @@ namespace WebStone.Controllers
         public virtual ActionResult Index()
         {
             return View();
+        }
+        public virtual ActionResult GetDeck()
+        {
+            var decks = new DisplayDeckModel();
+           
+            return View(decks);
         }
     }
 }

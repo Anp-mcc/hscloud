@@ -1,0 +1,40 @@
+﻿@using Newtonsoft.Json
+@model WebStone.Models.DisplayDeckModel
+@{
+    Layout = MVC.Shared.Views._Layout;
+}
+<div id="templateContainer">
+    <script id='template' type='text/ractive'>
+        
+        {{#if DisplayDeck.Name == null}}
+        <p>{{name}}!</p>
+        {{else}}
+        {{#with DeckModel}}
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-success">
+                {{Name}}
+            </li>
+            {{#each DisplayDeck}}
+            <li class="list-group-item">
+                {{Name}}
+            </li>
+            {{/each}}
+        </ul>
+        {{/with}}
+        {{/if}}
+    </script>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+    var deck = @Html.Raw(JsonConvert.SerializeObject(Model));
+    var ractive = new Ractive({
+        el: '#templateContainer',
+        template: '#template',
+        data: {
+            name: 'Sorry, Database dont have decks',
+            DeckModel: deck
+        }
+    });
+    </script>
+}
