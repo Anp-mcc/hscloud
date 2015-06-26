@@ -19,6 +19,8 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -111,6 +113,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Converter\CardIdToNameConverter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -118,7 +121,8 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Infrastucture\NinjectDependencyResolver.cs" />
-    <Compile Include="Models\DisplayDeckModel.cs" />
+    <Compile Include="Mapper\DeckMapper.cs" />
+    <Compile Include="Models\DeckViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
@@ -186,6 +190,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
