@@ -3,8 +3,11 @@
 
     Layout = MVC.Shared.Views._Layout;
 }
-        <div>
-            Hello world!
-        </div>
+@foreach(var deck in Model)
+{
+    <div>
+        <h3>@deck.Name</h3>
+         <h4>@deck.Hero</h4>
+    </div>
 
-
+}

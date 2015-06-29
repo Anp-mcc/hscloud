@@ -16,7 +16,7 @@ namespace WebStone.Mapper
 
         public DeckViewModel Map(Deck deck)
         {
-            return new DeckViewModel { Name = deck.Name, CardNames = deck.Cards.Select(x => _cardIdToNameConverter.Convert(x.Id))};
+            return new DeckViewModel { Name = deck.Name, Hero = deck.Hero.ToString() ,CardNames = deck.Cards.Select(x => _cardIdToNameConverter.Convert(x.Id))};
         }
     }
 }
