@@ -56,6 +56,12 @@ namespace WebStone.Controllers
             return RedirectToActionPermanent(taskResult.Result);
         }
 
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult CardList()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CardList);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public HomeController Actions { get { return MVC.Home; } }
@@ -73,17 +79,25 @@ namespace WebStone.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = "Index";
-            public readonly string GetDeck = "GetDeck";
+            public readonly string CardList = "CardList";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string Index = "Index";
-            public const string GetDeck = "GetDeck";
+            public const string CardList = "CardList";
         }
 
 
+        static readonly ActionParamsClass_CardList s_params_CardList = new ActionParamsClass_CardList();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_CardList CardListParams { get { return s_params_CardList; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_CardList
+        {
+            public readonly string deckName = "deckName";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -94,10 +108,10 @@ namespace WebStone.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string GetDeck = "GetDeck";
+                public readonly string CardList = "CardList";
                 public readonly string Index = "Index";
             }
-            public readonly string GetDeck = "~/Views/Home/GetDeck.cshtml";
+            public readonly string CardList = "~/Views/Home/CardList.cshtml";
             public readonly string Index = "~/Views/Home/Index.cshtml";
         }
     }
@@ -119,13 +133,14 @@ namespace WebStone.Controllers
         }
 
         [NonAction]
-        partial void GetDeckOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+        partial void CardListOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string deckName);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult GetDeck()
+        public override System.Web.Mvc.ActionResult CardList(string deckName)
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.GetDeck);
-            GetDeckOverride(callInfo);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.CardList);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "deckName", deckName);
+            CardListOverride(callInfo, deckName);
             return callInfo;
         }
 

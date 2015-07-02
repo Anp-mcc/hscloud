@@ -1,13 +1,15 @@
-﻿@model IEnumerable<WebStone.Models.DeckViewModel>
+﻿@using WebStone.HtmlHelpers
+@model IEnumerable<WebStone.Models.DeckViewModel>
 @{
-
     Layout = MVC.Shared.Views._Layout;
 }
+
 @foreach(var deck in Model)
 {
     <div>
         <h3>@deck.Name</h3>
-         <h4>@deck.Hero</h4>
+        
+        <h4>@Html.HeroClassToIcon(@deck.Hero)</h4>
+        @Html.ActionLink("View deck", "CardList", new { deckName = @deck.Name })
     </div>
-
 }

@@ -120,9 +120,10 @@
     <Compile Include="HomeController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="HtmlHelpers\DeckHelpers.cs" />
     <Compile Include="HtmlHelpers\PagingHelpers.cs" />
     <Compile Include="Infrastucture\NinjectDependencyResolver.cs" />
-    <Compile Include="Mapper\DeckMapper.cs" />
+    <Compile Include="Mapper\MapperExtension.cs" />
     <Compile Include="Models\DeckViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -146,7 +147,7 @@
     </None>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\GetDeck.cshtml" />
+    <Content Include="Views\Home\CardList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
