@@ -1,7 +1,7 @@
-﻿using Entity;
-using WebStone.Models;
+﻿using CQS.Models;
+using Entity;
 
-namespace WebStone.Mapper
+namespace CQS.Mappers
 {
     public static class MapperExtension
     {

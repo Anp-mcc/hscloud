@@ -1,29 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Mvc;
-using Entity;
-using Raven.Client;
-using WebStone.Mapper;
+﻿using System.Web.Mvc;
+using CQS;
+using CQS.Core;
+using CQS.Query;
 
 namespace WebStone.Controllers
 {
     public partial class HomeController : Controller
     {
-        private readonly IDocumentStore _documentStore;
+        private readonly IQueryDispatcher _dispatcher;
 
-        public HomeController(IDocumentStore documentStore)
+        public HomeController(IQueryDispatcher dispatcher)
         {
-            _documentStore = documentStore;
+            _dispatcher = dispatcher;
         }
 
         public virtual ActionResult Index()
         {
-            using (var session = _documentStore.OpenSession())
-            {
-                var decks = session.Query<Deck>().Select(x => x.Map());
-                return View(decks);
-            }
+            var result = _dispatcher.Dispatch<QueryAllDeck, QueryAllDeckResult>(new QueryAllDeck());
+           
+            return View(result.Decks);
+            
         }
 
         public virtual ActionResult CardList(string deckName)

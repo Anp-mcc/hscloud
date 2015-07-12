@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Web.Mvc;
-using Entity;
+using CQS;
+using CQS.Core;
+using CQS.Query;
+using DataAccess;
 using Ninject;
-using Raven.Client;
 using Raven.Client.Document;
 
 namespace WebStone.Infrastucture
@@ -21,17 +23,27 @@ namespace WebStone.Infrastucture
 
         private void AddBinding()
         {
-            InitDbContext();
+            var docStore = InitDbContext();
+
+            var core = new DatabaseCore(docStore);
+
+            _kernel.Bind<IDatabaseCore>().ToConstant(core);
+
+            _kernel.Bind<IQueryDispatcher>().To<QueryDispatcher>();
+            _kernel.Bind<IQueryHandler<QueryAllDeck, QueryAllDeckResult>>().To<QueryAllDeckHandler>();
         }
 
-        private void InitDbContext()
+        private DocumentStore InitDbContext()
         {
-            var connectionString = ConfigurationManager.AppSettings["DatabaseUrl"];
-            var databaseName = ConfigurationManager.AppSettings["DefaultDatabase"];
-            var documentStore = new DocumentStore {Url = connectionString, DefaultDatabase = databaseName};
+            var documentStore = new DocumentStore
+            {
+                Url = ConfigurationManager.AppSettings["DatabaseUrl"],
+                DefaultDatabase = ConfigurationManager.AppSettings["DefaultDatabase"]
+            };
+
             documentStore.Initialize();
 
-            _kernel.Bind<IDocumentStore>().ToConstant(documentStore);
+            return documentStore;
         }
 
         public object GetService(Type serviceType)

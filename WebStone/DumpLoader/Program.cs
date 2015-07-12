@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
 using System.IO;
+using System.Linq;
+using DataAccess;
 using Newtonsoft.Json;
 using Raven.Client.Document;
 
@@ -19,35 +20,31 @@ namespace DumpLoader
 
             var cards = JsonConvert.DeserializeObject<Dictionary<string, List<CardJsonModel>>>(jsonStr);
 
-            var connectionString = ConfigurationManager.AppSettings["DatabaseUrl"];
-            var databaseName = ConfigurationManager.AppSettings["DefaultDatabase"];
-            var documentStore = new DocumentStore { Url = connectionString, DefaultDatabase = databaseName };
-            documentStore.Initialize();
+            var docStore = InitDbContext();
+            var core = new DatabaseCore(docStore);
 
-            using (var session = documentStore.OpenSession())
+            using (var session = core.OpenSession())
             {
-                foreach (var cardValues in cards.Values)
+                foreach (var cardJsonModel in cards.Values.SelectMany(cardValues => cardValues))
                 {
-                    foreach (var cardJsonModel in cardValues)
-                    {
-                        foreach (PropertyDescriptor descriptor in TypeDescriptor.GetProperties(cardJsonModel))
-                        {
-                            var name = descriptor.Name;
-                            var value = descriptor.GetValue(cardJsonModel);
-
-                            if (value is IEnumerable<string>)
-                                value = string.Join(" ", (IEnumerable<string>) value);
-
-                            Console.WriteLine("{0}={1}", name, value);
-                        }
-
-                        session.Store(cardJsonModel.Map());
-                    }
+                    session.Store(cardJsonModel.Map());
                 }
 
                 session.SaveChanges();
             }
+        }
 
+        private static DocumentStore InitDbContext()
+        {
+            var documentStore = new DocumentStore
+            {
+                Url = ConfigurationManager.AppSettings["DatabaseUrl"],
+                DefaultDatabase = ConfigurationManager.AppSettings["DefaultDatabase"]
+            };
+
+            documentStore.Initialize();
+
+            return documentStore;
         }
     }
 }
