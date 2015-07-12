@@ -16,15 +16,20 @@ namespace WebStone.Controllers
 
         public virtual ActionResult Index()
         {
-            var result = _dispatcher.Dispatch<QueryAllDeck, QueryAllDeckResult>(new QueryAllDeck());
+            var result = _dispatcher.Dispatch<AllDeckQuery, AllDeckQueryResult>(new AllDeckQuery());
            
             return View(result.Decks);
             
         }
 
-        public virtual ActionResult CardList(string deckName)
+        public virtual ActionResult CardList(string deckId)
         {
-            return View();
+            var result = 
+                _dispatcher.Dispatch<DeckWithCardsQuery, DeckWithCardsQueryResult>(new DeckWithCardsQuery()
+                {
+                    Id = deckId
+                });
+            return View(result.CardNames);
         }
     }
 }

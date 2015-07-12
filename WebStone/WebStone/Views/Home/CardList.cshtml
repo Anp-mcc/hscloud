@@ -3,4 +3,7 @@
     Layout = MVC.Shared.Views._Layout;
 }
 
-<h2>title</h2>
+@foreach (var cardName in Model)
+{
+    <h2>@cardName</h2>
+}

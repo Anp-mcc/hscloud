@@ -2,7 +2,7 @@
 
 namespace CQS.Query
 {
-    public class QueryAllDeck : IQuery
+    public class AllDeckQuery : IQuery
     {
          
     }

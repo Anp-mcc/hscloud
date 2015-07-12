@@ -7,7 +7,7 @@ namespace CQS.Mappers
     {
         public static DeckViewModel Map(this Deck deck)
         {
-            return new DeckViewModel { Name = deck.Name, Hero = deck.Hero };
+            return new DeckViewModel { Id = deck.Id, Name = deck.Name, Hero = deck.Hero };
         }
     }
 }

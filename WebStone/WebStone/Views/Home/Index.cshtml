@@ -10,6 +10,6 @@
         <h3>@deck.Name</h3>
         
         <h4>@Html.HeroClassToIcon(@deck.Hero)</h4>
-        @Html.ActionLink("View deck", "CardList", new { deckName = @deck.Name })
+        @Html.ActionLink("View deck", "CardList", new { deckId = @deck.Id })
     </div>
 }

@@ -6,12 +6,14 @@ namespace Entity
     {
         public Deck()
         {
-            Cards = new List<Card>();
+            CardsIds = new List<string>();
         }
+
+        public string Id { get; set; }
 
         public string Name { get; set; }
 
-        public IEnumerable<Card> Cards { get; set; } 
+        public IEnumerable<string> CardsIds { get; set; }
 
         public HeroClass Hero { get; set; }
     }

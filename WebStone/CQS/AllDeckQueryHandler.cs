@@ -10,16 +10,16 @@ using Entity;
 
 namespace CQS
 {
-    public class QueryAllDeckHandler : IQueryHandler<QueryAllDeck, QueryAllDeckResult>
+    public class AllDeckQueryHandler : IQueryHandler<AllDeckQuery, AllDeckQueryResult>
     {
         private readonly IDatabaseCore _core;
 
-        public QueryAllDeckHandler(IDatabaseCore core)
+        public AllDeckQueryHandler(IDatabaseCore core)
         {
             _core = core;
         }
 
-        public QueryAllDeckResult Retrieve(QueryAllDeck query)
+        public AllDeckQueryResult Retrieve(AllDeckQuery query)
         {
             if (query == null)
                 throw new ArgumentException("Cannot execute empty query");
@@ -27,12 +27,12 @@ namespace CQS
             using (var session = _core.OpenSession())
             {
                 var decksViewModel = session.Query<Deck>().ToList().Select(x => x.Map());
-                return new QueryAllDeckResult { Decks = decksViewModel };
+                return new AllDeckQueryResult { Decks = decksViewModel };
             }
         }
     }
 
-    public class QueryAllDeckResult : IQueryResult
+    public class AllDeckQueryResult : IQueryResult
     {
         public IEnumerable<DeckViewModel> Decks { get; set; }
     }

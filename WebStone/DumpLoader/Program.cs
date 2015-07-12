@@ -4,6 +4,7 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using DataAccess;
+using Entity;
 using Newtonsoft.Json;
 using Raven.Client.Document;
 
@@ -25,10 +26,11 @@ namespace DumpLoader
 
             using (var session = core.OpenSession())
             {
-                foreach (var cardJsonModel in cards.Values.SelectMany(cardValues => cardValues))
-                {
-                    session.Store(cardJsonModel.Map());
-                }
+                var cardJsonModel = cards.Values.SelectMany(cardValues => cardValues);
+                var ids = cardJsonModel.Take(30).Select(x => x.Id);
+
+                var deck = new Deck() {CardsIds = ids, Name = "SomeDeck", Hero = HeroClass.Hunter};
+                session.Store(deck);
 
                 session.SaveChanges();
             }

@@ -6,7 +6,7 @@ using DataAccess;
 using Entity;
 using Moq;
 using NUnit.Framework;
-using Raven.Client.Document;
+using Raven.Client.Embedded;
 using Raven.Tests.Helpers;
 
 namespace CQSTests
@@ -14,25 +14,16 @@ namespace CQSTests
     [TestFixture]
     public class QueryAllDeckHandlerTests : RavenTestBase
     {
-        private QueryAllDeckHandler _target;
-
-        private Mock<IDatabaseCore> _core;
-        private DocumentStore _store;
-
-        public QueryAllDeckHandlerTests()
-        {
-            
-            _core = new Mock<IDatabaseCore>();
-            _core.Setup(x => x.OpenSession()).Returns(_store.OpenSession);
-
-            _target = new QueryAllDeckHandler(_core.Object);
-        }
+        private AllDeckQueryHandler _target;
 
         [Test]
         [ExpectedException(typeof(ArgumentException))]
         public void Retrieve_Null_ArgumentException()
         {
-            _target.Retrieve(null);
+            using (InitCore())
+            {
+                _target.Retrieve(null);
+            }
         }
 
         [Test]
@@ -42,21 +33,25 @@ namespace CQSTests
             {
                 using (var session = core.OpenSession())
                 {
-                    session.Store(new Deck());
+                    session.Store(new Deck(){Name = "Some"});
                     session.SaveChanges();
                 }
+            
+                var result = _target.Retrieve(new AllDeckQuery());
+
+                Assert.AreEqual(1, result.Decks.Count());
             }
-
-            var result = _target.Retrieve(new QueryAllDeck());
-
-            Assert.AreEqual(1, result.Decks.Count());
         }
 
-        private DatabaseCore InitCore()
+        private EmbeddableDocumentStore InitCore()
         {
-            var store = NewRemoteDocumentStore();
+            var store = new EmbeddableDocumentStore() { DefaultDatabase = "TestDb"};
             store.Initialize();
-            return new DatabaseCore(store);
+            var core = new Mock<IDatabaseCore>();
+            core.Setup(x => x.OpenSession()).Returns(store.OpenSession);
+            _target = new AllDeckQueryHandler(core.Object);
+
+            return store;
         }
     }
 }

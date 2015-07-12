@@ -30,7 +30,8 @@ namespace WebStone.Infrastucture
             _kernel.Bind<IDatabaseCore>().ToConstant(core);
 
             _kernel.Bind<IQueryDispatcher>().To<QueryDispatcher>();
-            _kernel.Bind<IQueryHandler<QueryAllDeck, QueryAllDeckResult>>().To<QueryAllDeckHandler>();
+            _kernel.Bind<IQueryHandler<AllDeckQuery, AllDeckQueryResult>>().To<AllDeckQueryHandler>();
+            _kernel.Bind<IQueryHandler<DeckWithCardsQuery, DeckWithCardsQueryResult>>().To<DeckWithCardsQueryHandler>();
         }
 
         private DocumentStore InitDbContext()

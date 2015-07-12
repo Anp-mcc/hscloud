@@ -15,7 +15,10 @@ namespace DataAccess
 
         public IDocumentSession OpenSession()
         {
-            return _documentStore.OpenSession();
+            var session = _documentStore.OpenSession();
+            session.Advanced.MaxNumberOfRequestsPerSession = 100;
+
+            return session;
         }
 
         public void Dispose()
