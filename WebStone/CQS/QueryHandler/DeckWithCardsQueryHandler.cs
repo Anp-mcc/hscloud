@@ -6,7 +6,7 @@ using CQS.Query;
 using DataAccess;
 using Entity;
 
-namespace CQS
+namespace CQS.QueryHandler
 {
     public class DeckWithCardsQueryHandler : IQueryHandler<DeckWithCardsQuery, DeckWithCardsQueryResult>
     {  
@@ -24,7 +24,8 @@ namespace CQS
 
             using (var session = _core.OpenSession())
             {
-                var deck = session.Load<Deck>(query.Id);
+                var deck = string.IsNullOrEmpty(query.Id) ? session.Query<Deck>().First() : session.Load<Deck>(query.Id);
+
                 var cardNames = new List<string>();
 
                 foreach (var cardId in deck.CardsIds)

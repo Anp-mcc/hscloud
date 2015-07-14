@@ -8,7 +8,7 @@ using CQS.Query;
 using DataAccess;
 using Entity;
 
-namespace CQS
+namespace CQS.QueryHandler
 {
     public class AllDeckQueryHandler : IQueryHandler<AllDeckQuery, AllDeckQueryResult>
     {

@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using CQS;
 using CQS.Core;
 using CQS.Query;
+using CQS.QueryHandler;
 using DataAccess;
 using Ninject;
 using Raven.Client.Document;
@@ -30,8 +31,11 @@ namespace WebStone.Infrastucture
             _kernel.Bind<IDatabaseCore>().ToConstant(core);
 
             _kernel.Bind<IQueryDispatcher>().To<QueryDispatcher>();
+
+            //TODO move to automatic registration
             _kernel.Bind<IQueryHandler<AllDeckQuery, AllDeckQueryResult>>().To<AllDeckQueryHandler>();
             _kernel.Bind<IQueryHandler<DeckWithCardsQuery, DeckWithCardsQueryResult>>().To<DeckWithCardsQueryHandler>();
+            _kernel.Bind<IQueryHandler<AllCardsQuery, AllCardsQueryResult>>().To<AllCardsQueryHandler>();
         }
 
         private DocumentStore InitDbContext()

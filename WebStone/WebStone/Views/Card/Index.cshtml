@@ -1,0 +1,18 @@
+﻿@using WebStone.HtmlHelpers
+@model CQS.QueryHandler.AllCardsQueryResult
+@{
+    Layout = MVC.Shared.Views._Layout;
+}
+
+@foreach (var card in Model.CardViewModels)
+{
+    <div style="border: 2px solid black;">
+        <div>@card.Name</div>
+        <div>@card.Text</div>   
+        <div>@card.Attack</div>  
+        <div>@card.Cost</div>
+    </div>
+}
+<div>
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { page = x }))
+</div>

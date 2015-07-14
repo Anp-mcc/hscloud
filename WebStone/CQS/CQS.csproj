@@ -50,12 +50,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DeckWithCardsQueryHandler.cs" />
+    <Compile Include="Models\CardViewModel.cs" />
+    <Compile Include="QueryHandler\AllCardsQueryHandler.cs" />
+    <Compile Include="QueryHandler\DeckWithCardsQueryHandler.cs" />
     <Compile Include="Mappers\MapperExtension.cs" />
     <Compile Include="Models\DeckViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
-    <Compile Include="AllDeckQueryHandler.cs" />
+    <Compile Include="QueryHandler\AllDeckQueryHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Query\AllCardsQuery.cs" />
     <Compile Include="Query\AllDeckQuery.cs" />
     <Compile Include="Query\DeckWithCardsQuery.cs" />
   </ItemGroup>

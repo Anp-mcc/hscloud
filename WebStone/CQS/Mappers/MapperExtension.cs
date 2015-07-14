@@ -9,5 +9,10 @@ namespace CQS.Mappers
         {
             return new DeckViewModel { Id = deck.Id, Name = deck.Name, Hero = deck.Hero };
         }
+
+        public static CardViewModel Map(this Card card)
+        {
+            return new CardViewModel {Id = card.Id, Attack = card.Attack, Name = card.Name, Text = card.Text};
+        }
     }
 }

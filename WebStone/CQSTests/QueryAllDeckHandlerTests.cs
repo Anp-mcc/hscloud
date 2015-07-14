@@ -2,6 +2,7 @@
 using System.Linq;
 using CQS;
 using CQS.Query;
+using CQS.QueryHandler;
 using DataAccess;
 using Entity;
 using Moq;

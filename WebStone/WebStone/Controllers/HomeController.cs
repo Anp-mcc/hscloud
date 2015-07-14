@@ -2,6 +2,7 @@
 using CQS;
 using CQS.Core;
 using CQS.Query;
+using CQS.QueryHandler;
 
 namespace WebStone.Controllers
 {
