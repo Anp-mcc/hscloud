@@ -1,5 +1,4 @@
-﻿@using WebStone.HtmlHelpers
-@model CQS.QueryHandler.AllCardsQueryResult
+﻿@model CQS.QueryHandler.AllCardsQueryResult
 @{
     Layout = MVC.Shared.Views._Layout;
 }
@@ -14,5 +13,10 @@
     </div>
 }
 <div>
-    @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { page = x }))
+    <div>
+        @Html.ActionLink("Previous", "Index", new { page = @Model.PagingInfo.CurrentPage - 1 })
+    </div>
+    <div>
+        @Html.ActionLink("Next",  "Index", new {page = @Model.PagingInfo.CurrentPage + 1})
+    </div>
 </div>

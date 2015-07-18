@@ -1,14 +1,12 @@
-﻿using System;
-using Raven.Client;
-using Raven.Client.Document;
+﻿using Raven.Client;
 
 namespace DataAccess
 {
-    public class DatabaseCore : IDatabaseCore, IDisposable
+    public class DatabaseCore : IDatabaseCore
     {
-        private readonly DocumentStore _documentStore;
+        private readonly IDocumentStore _documentStore;
 
-        public DatabaseCore(DocumentStore documentStore)
+        public DatabaseCore(IDocumentStore documentStore)
         {
             _documentStore = documentStore;
         }
@@ -19,11 +17,6 @@ namespace DataAccess
             session.Advanced.MaxNumberOfRequestsPerSession = 100;
 
             return session;
-        }
-
-        public void Dispose()
-        {
-            _documentStore.Dispose();
         }
     }
 }

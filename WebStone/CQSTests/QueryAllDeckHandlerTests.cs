@@ -21,8 +21,11 @@ namespace CQSTests
         [ExpectedException(typeof(ArgumentException))]
         public void Retrieve_Null_ArgumentException()
         {
-            using (InitCore())
+            using (var store = new EmbeddableDocumentStore())
             {
+                store.Initialize();
+
+                _target = new AllDeckQueryHandler(new DatabaseCore(store));
                 _target.Retrieve(null);
             }
         }
@@ -30,29 +33,26 @@ namespace CQSTests
         [Test]
         public void Retrieve_DecksInDb_CountMatch()
         {
-            using (var core = InitCore())
+            using (var store = new EmbeddableDocumentStore())
             {
-                using (var session = core.OpenSession())
+                store.Initialize();
+
+                var core = new DatabaseCore(store);
+                using (var session = store.OpenSession())
                 {
-                    session.Store(new Deck(){Name = "Some"});
+                    session.Store(new Deck
+                    {
+                        Name = "OneStuff",
+                    });
                     session.SaveChanges();
                 }
-            
+
+
+                _target = new AllDeckQueryHandler(core);
                 var result = _target.Retrieve(new AllDeckQuery());
 
                 Assert.AreEqual(1, result.Decks.Count());
             }
-        }
-
-        private EmbeddableDocumentStore InitCore()
-        {
-            var store = new EmbeddableDocumentStore() { DefaultDatabase = "TestDb"};
-            store.Initialize();
-            var core = new Mock<IDatabaseCore>();
-            core.Setup(x => x.OpenSession()).Returns(store.OpenSession);
-            _target = new AllDeckQueryHandler(core.Object);
-
-            return store;
         }
     }
 }

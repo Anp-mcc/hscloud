@@ -31,6 +31,9 @@ namespace CQS.QueryHandler
                 foreach (var cardId in deck.CardsIds)
                 {
                     var card = session.Load<Card>(cardId);
+                    if(card == null)
+                        throw new ArgumentException(string.Format("Card for the following id = ({0}) cannot be found in database", cardId));
+
                     cardNames.Add(card.Name);
                 }
 
