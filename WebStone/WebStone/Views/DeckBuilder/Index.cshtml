@@ -1,0 +1,13 @@
+﻿@using WebStone.HtmlHelpers
+@model WebStone.Models.CreateDeckViewModel
+
+@{
+    Layout = MVC.Shared.Views._Layout;
+}
+
+<div>
+    @foreach (var heroType in @Model.HeroTypes)
+    {
+        @Html.Image(@heroType)
+    }
+</div>

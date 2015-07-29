@@ -7,6 +7,6 @@
         Hunter,
         Warlock,
         Druid,
-        Mag
+        Mage
     }
 }

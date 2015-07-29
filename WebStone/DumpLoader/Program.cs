@@ -27,9 +27,15 @@ namespace DumpLoader
             using (var session = core.OpenSession())
             {
                 var cardJsonModel = cards.Values.SelectMany(cardValues => cardValues);
+                foreach (var jsonModel in cardJsonModel)
+                {
+                    var card = jsonModel.Map();
+
+                    session.Store(card);
+                }
                 var ids = cardJsonModel.Take(30).Select(x => x.Id);
 
-                var deck = new Deck() {CardsIds = ids, Name = "SomeDeck", Hero = HeroClass.Hunter};
+                var deck = new Deck {CardsIds = ids, Name = "SomeDeck", Hero = HeroClass.Hunter};
                 session.Store(deck);
 
                 session.SaveChanges();
