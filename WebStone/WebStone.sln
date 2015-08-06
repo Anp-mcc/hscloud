@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQS.Core", "CQS.Core\CQS.Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQSTests", "CQSTests\CQSTests.csproj", "{5D833AA8-2ED7-43B0-87C4-AE205325A652}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecksGrabber", "DecksGrabber\DecksGrabber.csproj", "{997629A3-0AC5-4FAC-8DC8-AEC49B0296E5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{5D833AA8-2ED7-43B0-87C4-AE205325A652}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D833AA8-2ED7-43B0-87C4-AE205325A652}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D833AA8-2ED7-43B0-87C4-AE205325A652}.Release|Any CPU.Build.0 = Release|Any CPU
+		{997629A3-0AC5-4FAC-8DC8-AEC49B0296E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{997629A3-0AC5-4FAC-8DC8-AEC49B0296E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{997629A3-0AC5-4FAC-8DC8-AEC49B0296E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{997629A3-0AC5-4FAC-8DC8-AEC49B0296E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
