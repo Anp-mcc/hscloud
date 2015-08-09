@@ -6,7 +6,7 @@ namespace DumpLoader
     {
         public static Card Map(this CardJsonModel card)
         {
-            return new Card { Id = card.Id, Cost = card.Cost, Attack = card.Attack, Text = card.Text, Name = card.Name};
+            return new Card { Id = card.Id, Cost = card.Cost, Attack = card.Attack, Text = card.Text, Name = card.Name, Class = card.PlayerClas};
         }
     }
 }

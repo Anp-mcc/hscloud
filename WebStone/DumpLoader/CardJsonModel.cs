@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
+using Entity;
 
 namespace DumpLoader
 {
@@ -19,7 +20,7 @@ namespace DumpLoader
 
         public string Race { get; set; }
 
-        public string PlayerClas { get; set; }
+        public HeroClass PlayerClas { get; set; }
 
         public string Text { get; set; }
 

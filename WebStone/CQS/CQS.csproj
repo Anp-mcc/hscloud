@@ -50,8 +50,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\CardsForClassQueryResult.cs" />
     <Compile Include="Models\CardViewModel.cs" />
     <Compile Include="QueryHandler\AllCardsQueryHandler.cs" />
+    <Compile Include="QueryHandler\CardForClassQueryHandler.cs" />
     <Compile Include="QueryHandler\DeckWithCardsQueryHandler.cs" />
     <Compile Include="Mappers\MapperExtension.cs" />
     <Compile Include="Models\DeckViewModel.cs" />
@@ -60,6 +62,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Query\AllCardsQuery.cs" />
     <Compile Include="Query\AllDeckQuery.cs" />
+    <Compile Include="Query\CardForClassQuery.cs" />
     <Compile Include="Query\DeckWithCardsQuery.cs" />
   </ItemGroup>
   <ItemGroup>

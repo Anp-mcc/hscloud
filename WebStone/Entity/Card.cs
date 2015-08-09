@@ -11,5 +11,6 @@
         public int Attack { get; set; }
 
         public int Cost { get; set; }
+        public HeroClass Class { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 {
     public enum HeroClass
     {
+        Common,
         Priest,
         Warrior,
         Hunter,
