@@ -47,6 +47,6 @@ namespace CQS.QueryHandler
     {
         public PagingInfo PagingInfo { get; set; }
 
-        public IEnumerable<CardViewModel> CardViewModels { get; set; }
+        public IEnumerable<CardQueryResult> CardViewModels { get; set; }
     }
 }

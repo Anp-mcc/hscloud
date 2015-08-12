@@ -24,11 +24,16 @@ namespace CQS.QueryHandler
                 throw new NullReferenceException();
 
             var queryResult = new CardsForClassQueryResult();
+
             using (var session = _core.OpenSession())
             {
-                queryResult.Cards = session.Query<Card>().Take(9).ToList().Select(x => x.Map());
+                
+                queryResult.Cards = session.Query<Card>().
+                    Where(x => x.Class == query.SelectedHero || x.Class == CardType.Common).
+                    Skip(query.NumberOfCardsOnPage * (query.CurrentPage - 1)).Take(query.NumberOfCardsOnPage).
+                    ToList().
+                    Select(x => x.Map());
             }
-
             return queryResult;
         }
     }

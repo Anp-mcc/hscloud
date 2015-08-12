@@ -5,7 +5,9 @@ using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
 using Ninject;
 using WebStone.App_Start;
+using WebStone.Domain;
 using WebStone.Infrastucture;
+using WebStone.ModelBinder;
 
 namespace WebStone
 {
@@ -17,6 +19,7 @@ namespace WebStone
 
             SetDependencyResolver();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            ModelBinders.Binders.Add(typeof(DeckBuilder), new DeckBuilderModelBinder());
         }
 
         private void SetDependencyResolver()

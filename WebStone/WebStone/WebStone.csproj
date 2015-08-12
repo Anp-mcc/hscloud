@@ -147,6 +147,8 @@
     <Compile Include="Controllers\CardController.cs" />
     <Compile Include="Controllers\DeckBuilderController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Domain\CardPair.cs" />
+    <Compile Include="Domain\DeckBuilder.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -155,9 +157,11 @@
     </Compile>
     <Compile Include="HtmlHelpers\DeckHelpers.cs" />
     <Compile Include="HtmlHelpers\PagingHelpers.cs" />
-    <Compile Include="Hubs\LoadCardsHub.cs" />
+    <Compile Include="Hubs\LoadCardsHub .cs" />
     <Compile Include="Infrastucture\NinjectDependencyResolver.cs" />
     <Compile Include="Infrastucture\HubActivator.cs" />
+    <Compile Include="Mapper\MapperExtension.cs" />
+    <Compile Include="ModelBinder\DeckBuilderModelBinder.cs" />
     <Compile Include="Models\CreateDeckViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedController.generated.cs">
@@ -169,6 +173,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AllDecksViewModel.cs" />
+    <Compile Include="ViewModels\CardViewModel.cs" />
+    <Compile Include="ViewModels\DeckViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

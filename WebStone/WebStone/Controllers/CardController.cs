@@ -16,7 +16,7 @@ namespace WebStone.Controllers
 
         public ActionResult Index(int page = 1)
         {
-            var queryResult = _queryDispatcher.Dispatch<AllCardsQuery, AllCardsQueryResult>(new AllCardsQuery { CurrentPage = page});
+            var queryResult = _queryDispatcher.Dispatch<AllCardsQuery, AllCardsQueryResult>(new AllCardsQuery { CurrentPage = page });
             return View(queryResult);
         }
 	}

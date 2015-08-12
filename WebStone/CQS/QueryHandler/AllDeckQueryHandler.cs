@@ -34,6 +34,6 @@ namespace CQS.QueryHandler
 
     public class AllDeckQueryResult : IQueryResult
     {
-        public IEnumerable<DeckViewModel> Decks { get; set; }
+        public IEnumerable<DeckQueryResult> Decks { get; set; }
     }
 }

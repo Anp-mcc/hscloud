@@ -1,8 +1,8 @@
 ﻿using System.Web.Mvc;
-using CQS;
 using CQS.Core;
 using CQS.Query;
 using CQS.QueryHandler;
+using WebStone.Mapper;
 
 namespace WebStone.Controllers
 {
@@ -17,7 +17,7 @@ namespace WebStone.Controllers
 
         public virtual ActionResult Index()
         {
-            var result = _dispatcher.Dispatch<AllDeckQuery, AllDeckQueryResult>(new AllDeckQuery());
+            var result = _dispatcher.Dispatch<AllDeckQuery, AllDeckQueryResult>(new AllDeckQuery()).Map();
            
             return View(result.Decks);
             
@@ -30,6 +30,7 @@ namespace WebStone.Controllers
                 {
                     Id = deckId
                 });
+
             return View(result.CardNames);
         }
     }

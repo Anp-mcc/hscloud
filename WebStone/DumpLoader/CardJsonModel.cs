@@ -20,7 +20,7 @@ namespace DumpLoader
 
         public string Race { get; set; }
 
-        public HeroClass PlayerClas { get; set; }
+        public CardType PlayerClas { get; set; }
 
         public string Text { get; set; }
 

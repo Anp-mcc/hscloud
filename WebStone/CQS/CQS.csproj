@@ -32,37 +32,27 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Raven.Abstractions, Version=3.0.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RavenDB.Client.3.0.3690\lib\net45\Raven.Abstractions.dll</HintPath>
-    </Reference>
     <Reference Include="Raven.Client.Lightweight, Version=3.0.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\RavenDB.Client.3.0.3690\lib\net45\Raven.Client.Lightweight.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\CardsForClassQueryResult.cs" />
-    <Compile Include="Models\CardViewModel.cs" />
     <Compile Include="QueryHandler\AllCardsQueryHandler.cs" />
     <Compile Include="QueryHandler\CardForClassQueryHandler.cs" />
     <Compile Include="QueryHandler\DeckWithCardsQueryHandler.cs" />
     <Compile Include="Mappers\MapperExtension.cs" />
-    <Compile Include="Models\DeckViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="QueryHandler\AllDeckQueryHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Query\AllCardsQuery.cs" />
     <Compile Include="Query\AllDeckQuery.cs" />
     <Compile Include="Query\CardForClassQuery.cs" />
+    <Compile Include="Query\CardQueryResult.cs" />
+    <Compile Include="Query\DeckQueryResult.cs" />
     <Compile Include="Query\DeckWithCardsQuery.cs" />
   </ItemGroup>
   <ItemGroup>

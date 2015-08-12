@@ -1,7 +1,8 @@
 ﻿namespace Entity
 {
-    public enum HeroClass
+    public enum CardType
     {
+        Common,
         Priest,
         Warrior,
         Hunter,

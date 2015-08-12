@@ -1,20 +1,15 @@
 ﻿using System.Web.Mvc;
+using WebStone.Domain;
 using WebStone.Models;
 
 namespace WebStone.Controllers
 {
     public class DeckBuilderController : Controller
     {
-        private readonly CreateDeckViewModel _createDeckViewModel;
-
-        public DeckBuilderController(CreateDeckViewModel createDeckViewModel)
+        public ActionResult Index(DeckBuilder deckBuilder)
         {
-            _createDeckViewModel = createDeckViewModel;
-        }
-
-        public ActionResult Index()
-        {
-            return View(_createDeckViewModel);
+            var viewModel = new CreateDeckViewModel {};
+            return View(viewModel);
         }
 	}
 }

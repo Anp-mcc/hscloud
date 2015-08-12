@@ -1,18 +1,18 @@
-﻿using CQS.Models;
+﻿using CQS.Query;
 using Entity;
 
 namespace CQS.Mappers
 {
     public static class MapperExtension
     {
-        public static DeckViewModel Map(this Deck deck)
+        public static DeckQueryResult Map(this Deck deck)
         {
-            return new DeckViewModel { Id = deck.Id, Name = deck.Name, Hero = deck.Hero };
+            return new DeckQueryResult { Id = deck.Id, Name = deck.Name, Hero = deck.Hero };
         }
 
-        public static CardViewModel Map(this Card card)
+        public static CardQueryResult Map(this Card card)
         {
-            return new CardViewModel {Id = card.Id, Attack = card.Attack, Name = card.Name, Text = card.Text};
+            return new CardQueryResult { Id = card.Id, Attack = card.Attack, Name = card.Name, Text = card.Text };
         }
     }
 }

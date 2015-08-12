@@ -2,6 +2,7 @@
 using CQS.Core;
 using CQS.Models;
 using CQS.Query;
+using Entity;
 using Microsoft.AspNet.SignalR;
 
 namespace WebStone.Hubs
@@ -15,9 +16,17 @@ namespace WebStone.Hubs
             _queryDispatcher = queryDispatcher;
         }
 
-        public void LoadCards()
+        public void LoadCards(CardType heroClass, int currentPage, int cardsPerPage)
         {
-            var result = _queryDispatcher.Dispatch<CardForClassQuery, CardsForClassQueryResult>(new CardForClassQuery());
+            var query = new CardForClassQuery
+            {
+                SelectedHero = heroClass,
+                CurrentPage = currentPage,
+                NumberOfCardsOnPage = cardsPerPage
+            };
+
+            var result = _queryDispatcher.Dispatch<CardForClassQuery, CardsForClassQueryResult>(query);
+
             var cards = result.Cards.ToList();
 
             Clients.Caller.showCards(cards);
