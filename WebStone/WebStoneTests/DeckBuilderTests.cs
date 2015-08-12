@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using Entity;
+using Moq;
 using NUnit.Framework;
 using WebStone.Domain;
+using WebStone.Factories;
+using WebStone.ViewModels;
 
 namespace WebStoneTests
 {
@@ -13,36 +16,38 @@ namespace WebStoneTests
         [ExpectedException(typeof(ArgumentNullException))]
         public void Push_Null()
         {
-            var target = new DeckBuilder();
+            var deckFactory = new Mock<IDeckFactory<DeckViewModel>>();
+            var target = new DeckBuilder<DeckViewModel>(deckFactory.Object);
             target.Push(null);
         }
 
         [Test]
         public void Push_Card_ResultedDeckContainsOneCard()
         {
-            var target = new DeckBuilder();
-            target.Push(new Card());
+            var deckFactory = new Mock<IDeckFactory<DeckViewModel>>();
+            var target = new DeckBuilder<DeckViewModel>(deckFactory.Object); 
+            
+            target.Push("");
+            target.Build();
 
-            var deck = target.Build();
-
-            Assert.AreEqual(1, deck.CardsIds.Count());
+            deckFactory.Verify(x => x.Create(It.Is<IEnumerable<string>>(z => z.Count() == 1)));
         }
 
         [Test]
         public void Push_ThreeCardsWithSameId_ResultedDeckContainsOneCard()
         {
-            var target = new DeckBuilder();
-            var card = new Card {Id = "1"};
 
-            target.Push(card);
-            target.Push(card);
+            var deckFactory = new Mock<IDeckFactory<DeckViewModel>>();
+            var target = new DeckBuilder<DeckViewModel>(deckFactory.Object); var cardId = "1";
 
-            target.Push(new Card { Id = "2" });
+            target.Push(cardId);
+            target.Push(cardId);
+
+            target.Push("2");
 
             var deck = target.Build();
-            var cardIds = deck.CardsIds.ToList();
 
-            Assert.AreEqual(3, cardIds.Count());
+            deckFactory.Verify(x => x.Create(It.Is<IEnumerable<string>>(z => z.Count() == 3)));
         }
     }
 }

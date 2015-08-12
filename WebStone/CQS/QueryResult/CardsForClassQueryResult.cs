@@ -2,7 +2,7 @@
 using CQS.Core;
 using CQS.Query;
 
-namespace CQS.Models
+namespace CQS.QueryResult
 {
     public class CardsForClassQueryResult : IQueryResult
     {

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using CQS.Core;
 using CQS.Mappers;
-using CQS.Models;
 using CQS.Query;
 using DataAccess;
 using Entity;

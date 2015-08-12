@@ -2,8 +2,8 @@
 using System.Linq;
 using CQS.Core;
 using CQS.Mappers;
-using CQS.Models;
 using CQS.Query;
+using CQS.QueryResult;
 using DataAccess;
 using Entity;
 

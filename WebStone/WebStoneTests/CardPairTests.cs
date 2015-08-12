@@ -1,5 +1,4 @@
 ﻿using System;
-using Entity;
 using NUnit.Framework;
 using WebStone.Domain;
 
@@ -19,7 +18,7 @@ namespace WebStoneTests
         [Test]
         public void CardPair_CountShouldBeOne()
         {
-            var cardPair = new CardPair(new Card());
+            var cardPair = new CardPair("1");
 
             Assert.AreEqual(1, cardPair.Count);
         }
@@ -27,7 +26,7 @@ namespace WebStoneTests
         [Test]
         public void CardPair_CardId_AreSameAsCard()
         {
-            var pair = new CardPair(new Card {Id = "1"});
+            var pair = new CardPair("1");
 
             Assert.AreEqual("1", pair.Id);
         }
@@ -36,16 +35,16 @@ namespace WebStoneTests
         [ExpectedException(typeof(ArgumentException))]
         public void Add_CardWithDifferentId()
         {
-            var pair = new CardPair(new Card {Id = "1"});
+            var pair = new CardPair("1");
 
-            pair.Add(new Card {Id = "2"});
+            pair.Add("2");
         }
 
         [Test]
         public void Add_CardWithSameId_CountEq2()
         {
-            var pair = new CardPair(new Card {Id = "1"});
-            pair.Add(new Card { Id = "1" });
+            var pair = new CardPair("1");
+            pair.Add("1");
 
             Assert.AreEqual(2, pair.Count);
         }
@@ -54,9 +53,9 @@ namespace WebStoneTests
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Add_CardWithSameIdTwice_Exception()
         {
-            var pair = new CardPair(new Card { Id = "1" });
-            pair.Add(new Card { Id = "1" });
-            pair.Add(new Card { Id = "1" });
+            var pair = new CardPair("1");
+            pair.Add("1");
+            pair.Add("1");
 
             Assert.AreEqual(2, pair.Count);
         }

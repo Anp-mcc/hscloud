@@ -8,6 +8,7 @@ using WebStone.App_Start;
 using WebStone.Domain;
 using WebStone.Infrastucture;
 using WebStone.ModelBinder;
+using WebStone.ViewModels;
 
 namespace WebStone
 {
@@ -15,16 +16,17 @@ namespace WebStone
     {
         protected void Application_Start()
         {
+            var kernel = new StandardKernel();
+
             AreaRegistration.RegisterAllAreas();
 
-            SetDependencyResolver();
+            SetDependencyResolver(kernel);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            ModelBinders.Binders.Add(typeof(DeckBuilder), new DeckBuilderModelBinder());
+            ModelBinders.Binders.Add(typeof(DeckBuilder<DeckViewModel>), new DeckBuilderModelBinder(kernel));
         }
 
-        private void SetDependencyResolver()
+        private void SetDependencyResolver(IKernel kernel)
         {
-            var kernel = new StandardKernel();
             var ninjectDependencyResolver = new NinjectDependencyResolver(kernel);
 
             DependencyResolver.SetResolver(ninjectDependencyResolver);

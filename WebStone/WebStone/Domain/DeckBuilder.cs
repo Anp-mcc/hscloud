@@ -1,35 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Entity;
+using WebStone.Factories;
 
 namespace WebStone.Domain
 {
-    public class DeckBuilder
+    public class DeckBuilder<T>
     {
+        private readonly IDeckFactory<T> _deckFactory;
         private readonly IList<CardPair> _cards;
         
-        public DeckBuilder()
+        public DeckBuilder(IDeckFactory<T> deckFactory)
         {
+            _deckFactory = deckFactory;
             _cards = new List<CardPair>();
         }
 
-        public void Push(Card card)
+        public void Push(string cardId)
         {
-            if(card == null)
+            if(cardId == null)
                 throw new ArgumentNullException();
 
-            var cardPair = _cards.FirstOrDefault(x => x.Id == card.Id);
+            var cardPair = _cards.FirstOrDefault(x => x.Id == cardId);
 
             if(cardPair == null)
-                _cards.Add(new CardPair(card));
+                _cards.Add(new CardPair(cardId));
             else
-                cardPair.Add(card);
+                cardPair.Add(cardId);
         }
 
-        public Deck Build()
+        public T Build()
         {
-            return new Deck {CardsIds = _cards.SelectMany(x => x.Ids)};
+            return _deckFactory.Create(_cards.SelectMany(x => x.Ids));
         }
     }
 }

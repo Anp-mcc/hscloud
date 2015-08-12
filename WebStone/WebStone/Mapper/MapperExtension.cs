@@ -16,5 +16,10 @@ namespace WebStone.Mapper
         {
             return new DeckViewModel {Hero = deck.Hero, Id = deck.Id, Name = deck.Name};
         }
+
+        public static CardViewModel Map(this CardQueryResult card)
+        {
+            return new CardViewModel {Id = card.Id, Name = card.Name, Cost = card.Cost, Attack = card.Attack, Text = card.Text};
+        }
     }
 }

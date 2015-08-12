@@ -149,6 +149,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Domain\CardPair.cs" />
     <Compile Include="Domain\DeckBuilder.cs" />
+    <Compile Include="Factories\DeckViewModelFactory.cs" />
+    <Compile Include="Factories\IDeckFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

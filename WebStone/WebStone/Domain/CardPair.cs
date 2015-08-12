@@ -12,18 +12,18 @@ namespace WebStone.Domain
         public string Id { get; set; }
         public int Count { get; set; }
 
-        public CardPair(Card card)
+        public CardPair(string cardId)
         {
-            if(card == null)
+            if (cardId == null)
                 throw new ArgumentNullException();
 
-            Id = card.Id;
+            Id = cardId;
             Count = 1;
         }
 
-        public void Add(Card card)
+        public void Add(string cardId)
         {
-            if(card.Id != Id)
+            if (cardId != Id)
                 throw new ArgumentException();
 
             if(Count == 2)

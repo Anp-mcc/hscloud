@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Web.Mvc;
-using CQS.Models;
+using CQS.QueryResult;
 
 namespace WebStone.HtmlHelpers
 {

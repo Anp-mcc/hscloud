@@ -40,16 +40,19 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\CardsForClassQueryResult.cs" />
+    <Compile Include="QueryHandler\CardsByIdsQueryHandler.cs" />
+    <Compile Include="QueryResult\CardsForClassQueryResult.cs" />
     <Compile Include="QueryHandler\AllCardsQueryHandler.cs" />
+    <Compile Include="QueryResult\CardsByIdsQueryResult.cs" />
     <Compile Include="QueryHandler\CardForClassQueryHandler.cs" />
     <Compile Include="QueryHandler\DeckWithCardsQueryHandler.cs" />
     <Compile Include="Mappers\MapperExtension.cs" />
-    <Compile Include="Models\PagingInfo.cs" />
+    <Compile Include="QueryResult\PagingInfo.cs" />
     <Compile Include="QueryHandler\AllDeckQueryHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Query\AllCardsQuery.cs" />
     <Compile Include="Query\AllDeckQuery.cs" />
+    <Compile Include="Query\CardsByIdsQuery.cs" />
     <Compile Include="Query\CardForClassQuery.cs" />
     <Compile Include="Query\CardQueryResult.cs" />
     <Compile Include="Query\DeckQueryResult.cs" />

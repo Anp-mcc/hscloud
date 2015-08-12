@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using CQS.Core;
-using CQS.Models;
 using CQS.Query;
+using CQS.QueryResult;
 using Entity;
 using Microsoft.AspNet.SignalR;
 

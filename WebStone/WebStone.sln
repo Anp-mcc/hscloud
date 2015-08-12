@@ -30,6 +30,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQSTests", "CQSTests\CQSTes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DecksGrabber", "DecksGrabber\DecksGrabber.csproj", "{997629A3-0AC5-4FAC-8DC8-AEC49B0296E5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "Contracts\Contracts.csproj", "{EEFFE623-B7A7-4121-8D38-F42A7F9CE2BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,6 +74,10 @@ Global
 		{997629A3-0AC5-4FAC-8DC8-AEC49B0296E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{997629A3-0AC5-4FAC-8DC8-AEC49B0296E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{997629A3-0AC5-4FAC-8DC8-AEC49B0296E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEFFE623-B7A7-4121-8D38-F42A7F9CE2BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEFFE623-B7A7-4121-8D38-F42A7F9CE2BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEFFE623-B7A7-4121-8D38-F42A7F9CE2BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEFFE623-B7A7-4121-8D38-F42A7F9CE2BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

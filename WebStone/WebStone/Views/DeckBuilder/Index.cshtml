@@ -13,6 +13,22 @@
 </div>
 
 <div>
+    @foreach (var card in @Model.Cards)
+    {
+        @Html.ActionLink(card.Name, "Index", new {cardId = @card.Id})
+        <br/>
+    }
+</div>
+<br/>
+<div>
+    @foreach (var card in @Model.Deck.Cards)
+    {
+        <b>@card.Name</b>
+        <br/>
+    }
+</div>
+
+<div>
     <input type="button" id="loadCards" value="LoadCards" />
     <input type="hidden" id="displayname" />
     <ul id="discussion">
