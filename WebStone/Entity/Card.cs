@@ -6,21 +6,21 @@ namespace Entity
     {
         public string Id { get; set; }
 
-        public string Language { get; set; }
+        public Language? Language { get; set; }
 
         public string Name { get; set; }
 
         public int Cost { get; set; }
 
-        public string Type { get; set; }
+        public CardType Type { get; set; }
 
-        public string Rarity { get; set; }
+        public CardRarity? Rarity { get; set; }
 
-        public string Faction { get; set; }
+        public Faction? Faction { get; set; }
 
-        public string Race { get; set; }
+        public Race? Race { get; set; }
 
-        public CardType PlayerClass { get; set; }
+        public PlayerClass? PlayerClass { get; set; }
 
         public string Text { get; set; }
 

@@ -8,6 +8,6 @@ namespace CQS.Query
         public string Id { get; set; }
 
         public string Name { get; set; }
-        public HeroClass Hero { get; set; }
+        public PlayerClass Hero { get; set; }
     }
 }

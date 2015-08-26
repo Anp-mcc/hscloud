@@ -6,11 +6,11 @@ namespace WebStone.HtmlHelpers
     //TODO make some resource manager to provide names for resources
     public static class DeckHelpers
     {
-        public static MvcHtmlString HeroClassToIcon(this HtmlHelper html, HeroClass heroClass)
+        public static MvcHtmlString HeroClassToIcon(this HtmlHelper html, PlayerClass playerClass)
         {
             var builder = new TagBuilder("img");
 
-            builder.MergeAttribute("src", string.Format("/Content/Image/Icon/Icon_{0}_64.png", heroClass));
+            builder.MergeAttribute("src", string.Format("/Content/Image/Icon/Icon_{0}_64.png", playerClass));
 
             return MvcHtmlString.Create(builder.ToString(TagRenderMode.SelfClosing));
         }

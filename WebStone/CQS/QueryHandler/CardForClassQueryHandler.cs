@@ -29,7 +29,7 @@ namespace CQS.QueryHandler
             {
                 
                 queryResult.Cards = session.Query<Card>().
-                    Where(x => x.PlayerClass == query.SelectedHero || x.PlayerClass == CardType.Common).
+                    Where(x => x.PlayerClass == query.SelectedHero || x.Type == CardType.Spell).
                     Skip(query.NumberOfCardsOnPage * (query.CurrentPage - 1)).Take(query.NumberOfCardsOnPage).
                     ToList().
                     Select(x => x.Map());

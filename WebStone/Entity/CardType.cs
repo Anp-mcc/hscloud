@@ -1,13 +1,14 @@
-﻿namespace Entity
+﻿using System.ComponentModel;
+
+namespace Entity
 {
     public enum CardType
     {
-        Common,
-        Priest,
-        Warrior,
-        Hunter,
-        Warlock,
-        Druid,
-        Mage
+        Minion,
+        Spell,
+        Weapon,
+        Hero,
+        HeroPower,
+        Enchantment
     }
 }

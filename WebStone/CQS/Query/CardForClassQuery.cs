@@ -8,6 +8,6 @@ namespace CQS.Query
         public int NumberOfCardsOnPage { get; set; }
         public int CurrentPage { get; set; }
 
-        public CardType SelectedHero { get; set; }
+        public PlayerClass SelectedHero { get; set; }
     }
 }
