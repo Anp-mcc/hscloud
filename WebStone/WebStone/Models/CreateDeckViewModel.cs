@@ -14,7 +14,7 @@ namespace WebStone.Models
         
         public CreateDeckViewModel()
         {
-            HeroTypes = Enum.GetNames(typeof (HeroClass));
+            HeroTypes = Enum.GetNames(typeof(PlayerClass));
         }
     }
 }

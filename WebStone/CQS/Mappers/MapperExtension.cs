@@ -7,7 +7,7 @@ namespace CQS.Mappers
     {
         public static DeckQueryResult Map(this Deck deck)
         {
-            return new DeckQueryResult { Id = deck.Id, Name = deck.Name, Hero = deck.Hero };
+            return new DeckQueryResult { Id = deck.Id, Name = deck.Name, Hero = deck.Class };
         }
 
         public static CardQueryResult Map(this Card card)

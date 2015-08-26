@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Runtime.Serialization;
-using Entity;
+﻿using Entity;
+using System.Collections.Generic;
 
 namespace DumpLoader
 {
@@ -20,11 +19,11 @@ namespace DumpLoader
 
         public string Race { get; set; }
 
-        public CardType PlayerClas { get; set; }
+        public string PlayerClass { get; set; }
 
         public string Text { get; set; }
 
-        public string InPlayerText { get; set; }
+        public string InPlayText { get; set; }
 
         public List<string> Mechanics { get; set; }
 

@@ -8,7 +8,7 @@ namespace WebStone.ViewModels
         public string Id { get; set; }
 
         public string Name { get; set; }
-        public HeroClass Hero { get; set; }
+        public PlayerClass Hero { get; set; }
 
         public IEnumerable<CardViewModel> Cards { get; set; }
     }

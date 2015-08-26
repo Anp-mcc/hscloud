@@ -24,7 +24,7 @@ namespace WebStone.Controllers
 
         public ActionResult Index(DeckBuilder<DeckViewModel> deckBuilder, string cardId = null)
         {
-            var query = _queryDispatcher.Dispatch<CardForClassQuery, CardsForClassQueryResult>(new CardForClassQuery { SelectedHero = CardType.Priest, CurrentPage = 1, NumberOfCardsOnPage = 10});
+            var query = _queryDispatcher.Dispatch<CardForClassQuery, CardsForClassQueryResult>(new CardForClassQuery { SelectedHero = PlayerClass.Priest, CurrentPage = 1, NumberOfCardsOnPage = 10});
 
             var cardViewModels = query.Cards.Select(x => x.Map());
             var cards = cardViewModels as IList<CardViewModel> ?? cardViewModels.ToList();

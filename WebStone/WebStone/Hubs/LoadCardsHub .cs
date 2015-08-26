@@ -16,11 +16,11 @@ namespace WebStone.Hubs
             _queryDispatcher = queryDispatcher;
         }
 
-        public void LoadCards(CardType heroClass, int currentPage, int cardsPerPage)
+        public void LoadCards(PlayerClass playerClass, int currentPage, int cardsPerPage)
         {
             var query = new CardForClassQuery
             {
-                SelectedHero = heroClass,
+                SelectedHero = playerClass,
                 CurrentPage = currentPage,
                 NumberOfCardsOnPage = cardsPerPage
             };
